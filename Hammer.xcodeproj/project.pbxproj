@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04ABBAC1157664B400ABEFBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAC0157664B400ABEFBE /* Foundation.framework */; };
+		04ABBAC7157664B400ABEFBE /* Hammer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABBAC6157664B400ABEFBE /* Hammer.m */; };
+		04ABBACF157664B500ABEFBE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBACE157664B500ABEFBE /* SenTestingKit.framework */; };
+		04ABBAD1157664B500ABEFBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAD0157664B500ABEFBE /* UIKit.framework */; };
+		04ABBAD2157664B500ABEFBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAC0157664B400ABEFBE /* Foundation.framework */; };
+		04ABBAD5157664B500ABEFBE /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBABD157664B400ABEFBE /* libHammer.a */; };
+		04ABBADB157664B500ABEFBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ABBAD9157664B500ABEFBE /* InfoPlist.strings */; };
+		04ABBADE157664B500ABEFBE /* HammerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABBADD157664B500ABEFBE /* HammerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04ABBAD3157664B500ABEFBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04ABBAB4157664B400ABEFBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04ABBABC157664B400ABEFBE;
+			remoteInfo = Hammer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04ABBABD157664B400ABEFBE /* libHammer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHammer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		04ABBAC0157664B400ABEFBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		04ABBAC4157664B400ABEFBE /* Hammer-Prefix.pch */ = {isa = PBXFileReference; path = "Hammer-Prefix.pch"; sourceTree = "<group>"; };
+		04ABBAC5157664B400ABEFBE /* Hammer.h */ = {isa = PBXFileReference; path = Hammer.h; sourceTree = "<group>"; };
+		04ABBAC6157664B400ABEFBE /* Hammer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hammer.m; sourceTree = "<group>"; };
+		04ABBACD157664B400ABEFBE /* HammerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HammerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04ABBACE157664B500ABEFBE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		04ABBAD0157664B500ABEFBE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		04ABBAD8157664B500ABEFBE /* HammerTests-Info.plist */ = {isa = PBXFileReference; path = "HammerTests-Info.plist"; sourceTree = "<group>"; };
+		04ABBADA157664B500ABEFBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04ABBADC157664B500ABEFBE /* HammerTests.h */ = {isa = PBXFileReference; path = HammerTests.h; sourceTree = "<group>"; };
+		04ABBADD157664B500ABEFBE /* HammerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HammerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04ABBABA157664B400ABEFBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ABBAC1157664B400ABEFBE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04ABBAC9157664B400ABEFBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ABBACF157664B500ABEFBE /* SenTestingKit.framework in Frameworks */,
+				04ABBAD1157664B500ABEFBE /* UIKit.framework in Frameworks */,
+				04ABBAD2157664B500ABEFBE /* Foundation.framework in Frameworks */,
+				04ABBAD5157664B500ABEFBE /* libHammer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04ABBAB2157664B400ABEFBE = {
+			isa = PBXGroup;
+			children = (
+				04ABBAC2157664B400ABEFBE /* Hammer */,
+				04ABBAD6157664B500ABEFBE /* HammerTests */,
+				04ABBABF157664B400ABEFBE /* Frameworks */,
+				04ABBABE157664B400ABEFBE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04ABBABE157664B400ABEFBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04ABBABD157664B400ABEFBE /* libHammer.a */,
+				04ABBACD157664B400ABEFBE /* HammerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04ABBABF157664B400ABEFBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04ABBAC0157664B400ABEFBE /* Foundation.framework */,
+				04ABBACE157664B500ABEFBE /* SenTestingKit.framework */,
+				04ABBAD0157664B500ABEFBE /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04ABBAC2157664B400ABEFBE /* Hammer */ = {
+			isa = PBXGroup;
+			children = (
+				04ABBAC5157664B400ABEFBE /* Hammer.h */,
+				04ABBAC6157664B400ABEFBE /* Hammer.m */,
+				04ABBAC3157664B400ABEFBE /* Supporting Files */,
+			);
+			path = Hammer;
+			sourceTree = "<group>";
+		};
+		04ABBAC3157664B400ABEFBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04ABBAC4157664B400ABEFBE /* Hammer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04ABBAD6157664B500ABEFBE /* HammerTests */ = {
+			isa = PBXGroup;
+			children = (
+				04ABBADC157664B500ABEFBE /* HammerTests.h */,
+				04ABBADD157664B500ABEFBE /* HammerTests.m */,
+				04ABBAD7157664B500ABEFBE /* Supporting Files */,
+			);
+			path = HammerTests;
+			sourceTree = "<group>";
+		};
+		04ABBAD7157664B500ABEFBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04ABBAD8157664B500ABEFBE /* HammerTests-Info.plist */,
+				04ABBAD9157664B500ABEFBE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		04ABBABB157664B400ABEFBE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		04ABBABC157664B400ABEFBE /* Hammer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04ABBAE1157664B500ABEFBE /* Build configuration list for PBXNativeTarget "Hammer" */;
+			buildPhases = (
+				04ABBAB9157664B400ABEFBE /* Sources */,
+				04ABBABA157664B400ABEFBE /* Frameworks */,
+				04ABBABB157664B400ABEFBE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hammer;
+			productName = Hammer;
+			productReference = 04ABBABD157664B400ABEFBE /* libHammer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		04ABBACC157664B400ABEFBE /* HammerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04ABBAE4157664B500ABEFBE /* Build configuration list for PBXNativeTarget "HammerTests" */;
+			buildPhases = (
+				04ABBAC8157664B400ABEFBE /* Sources */,
+				04ABBAC9157664B400ABEFBE /* Frameworks */,
+				04ABBACA157664B400ABEFBE /* Resources */,
+				04ABBACB157664B400ABEFBE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04ABBAD4157664B500ABEFBE /* PBXTargetDependency */,
+			);
+			name = HammerTests;
+			productName = HammerTests;
+			productReference = 04ABBACD157664B400ABEFBE /* HammerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04ABBAB4157664B400ABEFBE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Guilda;
+			};
+			buildConfigurationList = 04ABBAB7157664B400ABEFBE /* Build configuration list for PBXProject "Hammer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 04ABBAB2157664B400ABEFBE;
+			productRefGroup = 04ABBABE157664B400ABEFBE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04ABBABC157664B400ABEFBE /* Hammer */,
+				04ABBACC157664B400ABEFBE /* HammerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04ABBACA157664B400ABEFBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ABBADB157664B500ABEFBE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04ABBACB157664B400ABEFBE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04ABBAB9157664B400ABEFBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ABBAC7157664B400ABEFBE /* Hammer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04ABBAC8157664B400ABEFBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ABBADE157664B500ABEFBE /* HammerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04ABBAD4157664B500ABEFBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04ABBABC157664B400ABEFBE /* Hammer */;
+			targetProxy = 04ABBAD3157664B500ABEFBE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04ABBAD9157664B500ABEFBE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04ABBADA157664B500ABEFBE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04ABBADF157664B500ABEFBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04ABBAE0157664B500ABEFBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04ABBAE2157664B500ABEFBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Hammer.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hammer/Hammer-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		04ABBAE3157664B500ABEFBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Hammer.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hammer/Hammer-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		04ABBAE5157664B500ABEFBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hammer/Hammer-Prefix.pch";
+				INFOPLIST_FILE = "HammerTests/HammerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		04ABBAE6157664B500ABEFBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hammer/Hammer-Prefix.pch";
+				INFOPLIST_FILE = "HammerTests/HammerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04ABBAB7157664B400ABEFBE /* Build configuration list for PBXProject "Hammer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04ABBADF157664B500ABEFBE /* Debug */,
+				04ABBAE0157664B500ABEFBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04ABBAE1157664B500ABEFBE /* Build configuration list for PBXNativeTarget "Hammer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04ABBAE2157664B500ABEFBE /* Debug */,
+				04ABBAE3157664B500ABEFBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		04ABBAE4157664B500ABEFBE /* Build configuration list for PBXNativeTarget "HammerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04ABBAE5157664B500ABEFBE /* Debug */,
+				04ABBAE6157664B500ABEFBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04ABBAB4157664B400ABEFBE /* Project object */;
+}
