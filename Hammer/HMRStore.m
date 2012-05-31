@@ -3,7 +3,7 @@
 //  HMRStore
 //
 //  Created by Tiago Bastos on 30/05/2012.
-//  Copyright (c) 2012 Guilda. All rights reserved.
+//  Copyright (c) 2012 GUILDA TECNOLOGIA. All rights reserved.
 //
 
 #import "HMRStore.h"
