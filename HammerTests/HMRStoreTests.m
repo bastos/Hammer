@@ -65,31 +65,71 @@
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
     NSError *error = NULL;
-    
     [store value:@"bar" forKey:@"foo" error:&error];
+    
     STAssertTrue(error == NULL, @"Should not have an error");
 }
 
 - (void)testGet
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
-
     [store value:@"bar" forKey:@"foo" error:NULL];
-    
     NSString *value = [store valueForKey:@"foo" error:NULL];
-    
     NSLog(@"Value == %@", value);
     
     STAssertTrue([value isEqualToString:@"bar"], @"Value wasn't retrieved ");
 }
 
-- (void)testeDelete
+- (void)testRemove
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
     [store value:@"bar" forKey:@"foo" error:NULL];
-    [store deleteValueForKey:@"foo" error:NULL];
+    [store removeValueForKey:@"foo" error:NULL];
     id value = [store valueForKey:@"foo" error:NULL];
+    
     STAssertTrue(value == NULL, @"Item was not deleted");
 }
 
+- (void)testInvalidNullKey
+{
+    HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
+    NSError *error;
+    [store value:@"bar" forKey:NULL error:&error];    
+    
+    STAssertTrue(error != NULL, @"Key was not invalid");    
+}
+
+- (void)testInvalidEmptyStringKey
+{
+    HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
+    NSError *error;
+    [store value:@"bar" forKey:@"" error:&error];    
+    
+    STAssertTrue(error != NULL, @"Key was not invalid");    
+}
+
+- (void)testPushAndGetAllValuesFromList
+{
+    HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
+    [store pushValue:@"1" toList:@"foo" error:NULL];
+    [store pushValue:@"2" toList:@"foo" error:NULL];    
+    id object0 = [[store valuesFromList:@"foo" error:NULL] objectAtIndex:0];
+    id object1 = [[store valuesFromList:@"foo" error:NULL] objectAtIndex:1];    
+    
+    STAssertTrue([object0 isEqualToString:@"1"], @"The first object is not 0");
+    STAssertTrue([object1 isEqualToString:@"2"], @"The first object is not 1");    
+}
+
+
+- (void)testPopValueFromList 
+{
+    HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
+    [store pushValue:@"1" toList:@"testPopValueFromList" error:NULL];
+    [store pushValue:@"2" toList:@"testPopValueFromList" error:NULL];    
+    
+    [store popValueFromList:@"testPopValueFromList" error:NULL];
+    [store popValueFromList:@"testPopValueFromList" error:NULL];    
+        
+    STAssertTrue([[store valuesFromList:@"testPopValueFromList" error:NULL] count] == 0, @"Objects removed from list");
+}
 @end

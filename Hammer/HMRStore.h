@@ -20,8 +20,12 @@
 + (HMRStore*)sharedInstanceWithDatabasePath:(NSString*)databasePath;
 
 - (void)setupDatabase;
+
 - (void)value:(id)value forKey:(NSString *)key error:(NSError**)error;
 - (id)valueForKey:(NSString *)key error:(NSError**)error;
-- (void)deleteValueForKey:(NSString *)key error:(NSError**)error;
+- (void)removeValueForKey:(NSString *)key error:(NSError**)error;
 
+- (void)pushValue:(id)value toList:(NSString *)key error:(NSError**)error;
+- (id)popValueFromList:(NSString *)key error:(NSError**)error;
+- (id)valuesFromList:(NSString *)key error:(NSError**)error;
 @end
