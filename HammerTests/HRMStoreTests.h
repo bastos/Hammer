@@ -8,6 +8,8 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface HammerTests : SenTestCase
+@interface HRMStoreTests : SenTestCase
+
+@property (nonatomic, copy) NSString *databasePath;
 
 @end
