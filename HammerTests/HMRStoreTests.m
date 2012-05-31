@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Guilda. All rights reserved.
 //
 
-#import "HRMStoreTests.h"
+#import "HMRStoreTests.h"
 #import "HMRStore.h"
 
-@implementation HRMStoreTests
+@implementation HMRStoreTests
 
 @synthesize databasePath;
 
@@ -80,7 +80,7 @@
     
     NSLog(@"Value == %@", value);
     
-    STAssertTrue([value isEqualToString:@"bar"], @"Value wans't retrieved ");
+    STAssertTrue([value isEqualToString:@"bar"], @"Value wasn't retrieved ");
 }
 
 - (void)testeDelete

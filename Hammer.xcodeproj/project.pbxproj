@@ -14,7 +14,7 @@
 		04ABBAD2157664B500ABEFBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAC0157664B400ABEFBE /* Foundation.framework */; };
 		04ABBAD5157664B500ABEFBE /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBABD157664B400ABEFBE /* libHammer.a */; };
 		04ABBADB157664B500ABEFBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ABBAD9157664B500ABEFBE /* InfoPlist.strings */; };
-		04ABBADE157664B500ABEFBE /* HRMStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABBADD157664B500ABEFBE /* HRMStoreTests.m */; };
+		04ABBADE157664B500ABEFBE /* HMRStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABBADD157664B500ABEFBE /* HMRStoreTests.m */; };
 		04ABBAEC15766BAF00ABEFBE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAEB15766BAF00ABEFBE /* libsqlite3.dylib */; };
 		04ABBAED15766BBE00ABEFBE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAEB15766BAF00ABEFBE /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
@@ -40,8 +40,8 @@
 		04ABBAD0157664B500ABEFBE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		04ABBAD8157664B500ABEFBE /* HammerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HammerTests-Info.plist"; sourceTree = "<group>"; };
 		04ABBADA157664B500ABEFBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		04ABBADC157664B500ABEFBE /* HRMStoreTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRMStoreTests.h; sourceTree = "<group>"; };
-		04ABBADD157664B500ABEFBE /* HRMStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRMStoreTests.m; sourceTree = "<group>"; };
+		04ABBADC157664B500ABEFBE /* HMRStoreTests.h */ = {isa = PBXFileReference; path = HMRStoreTests.h; sourceTree = "<group>"; };
+		04ABBADD157664B500ABEFBE /* HMRStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMRStoreTests.m; sourceTree = "<group>"; };
 		04ABBAEB15766BAF00ABEFBE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -121,8 +121,8 @@
 		04ABBAD6157664B500ABEFBE /* HammerTests */ = {
 			isa = PBXGroup;
 			children = (
-				04ABBADC157664B500ABEFBE /* HRMStoreTests.h */,
-				04ABBADD157664B500ABEFBE /* HRMStoreTests.m */,
+				04ABBADC157664B500ABEFBE /* HMRStoreTests.h */,
+				04ABBADD157664B500ABEFBE /* HMRStoreTests.m */,
 				04ABBAD7157664B500ABEFBE /* Supporting Files */,
 			);
 			path = HammerTests;
@@ -253,7 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04ABBADE157664B500ABEFBE /* HRMStoreTests.m in Sources */,
+				04ABBADE157664B500ABEFBE /* HMRStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
