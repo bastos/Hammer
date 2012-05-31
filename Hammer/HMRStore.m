@@ -88,7 +88,7 @@ static BOOL initialized = NO;
         return NULL;
     }
     
-    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' ORDER BY TIMESTAMP ASC LIMIT 1", [NSString stringWithFormat:@"list:%@", key]];
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' ORDER BY TIMESTAMP DESC LIMIT 1", [NSString stringWithFormat:@"list:%@", key]];
     sqlite3_stmt *statement;
     id content = NULL;
     

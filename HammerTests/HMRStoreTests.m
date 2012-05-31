@@ -127,9 +127,11 @@
     [store pushValue:@"1" toList:@"testPopValueFromList" error:NULL];
     [store pushValue:@"2" toList:@"testPopValueFromList" error:NULL];    
     
-    [store popValueFromList:@"testPopValueFromList" error:NULL];
-    [store popValueFromList:@"testPopValueFromList" error:NULL];    
+    id object0 = [store popValueFromList:@"testPopValueFromList" error:NULL];
+    id object1 = [store popValueFromList:@"testPopValueFromList" error:NULL];    
         
+    STAssertTrue([object0 isEqualToString:@"2"], @"Objects removed from list");    
+    STAssertTrue([object1 isEqualToString:@"1"], @"Objects removed from list");        
     STAssertTrue([[store valuesFromList:@"testPopValueFromList" error:NULL] count] == 0, @"Objects removed from list");
 }
 @end
