@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
+extern NSInteger const HMRStoreKVType;
+extern NSInteger const HMRStoreListType;
+
+
 @interface HMRStore : NSObject {
     sqlite3 *databaseHandle;
 }

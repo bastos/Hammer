@@ -8,11 +8,14 @@
 
 #import "HMRStore.h"
 
+NSInteger const HMRStoreKVType = 0;
+NSInteger const HMRStoreListType = 1;
+
 @interface HMRStore ()
 
 - (NSArray*)retrieveValuesForKey:(NSString *)key error:(NSError**)error;
 - (BOOL)validKey:(NSString *)key error:(NSError**)error;
-- (void)saveValue:(NSString*)value forKey:(NSString*)key error:(NSError **)error;
+- (void)saveValue:(NSString*)value forKey:(NSString*)key kind:(int)kind error:(NSError **)error;
 - (void)deleteValueUsingUUID:(NSString *)uuid error:(NSError**)error;
 - (void)deleteValueForKey:(NSString *)key error:(NSError**)error;
 
@@ -58,7 +61,7 @@ static BOOL initialized = NO;
     
     if (sqlite3_open([self.databasePath UTF8String], &_databaseHandle) == SQLITE_OK) {
         if (!databaseAlreadyExists) {
-            const char *sqlStatement = "CREATE TABLE IF NOT EXISTS STORE (ID INTEGER PRIMARY KEY AUTOINCREMENT, UUID TEXT, TIMESTAMP INTEGER, KEY TEXT, CONTENT TEXT)";
+            const char *sqlStatement = "CREATE TABLE IF NOT EXISTS STORE (ID INTEGER PRIMARY KEY AUTOINCREMENT, UUID TEXT, TIMESTAMP INTEGER, KEY TEXT, CONTENT TEXT, KIND INTEGER)";
             char *error;
             if (sqlite3_exec((_databaseHandle), sqlStatement, NULL, NULL, &error) == SQLITE_OK) {
                 NSLog(@"Database and tables created. %@", self.databasePath);
@@ -80,7 +83,7 @@ static BOOL initialized = NO;
         return;
     }    
     
-    [self saveValue:value forKey:[NSString stringWithFormat:@"list:%@", key] error:error];
+    [self saveValue:value forKey:key kind:HMRStoreListType error:error];
 }
 
 - (id)popValueFromList:(NSString *)key error:(NSError**)error
@@ -89,7 +92,10 @@ static BOOL initialized = NO;
         return NULL;
     }
     
-    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' ORDER BY TIMESTAMP DESC LIMIT 1", [NSString stringWithFormat:@"list:%@", key]];
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' AND KIND = %d ORDER BY TIMESTAMP DESC LIMIT 1", key, HMRStoreListType];
+    
+    NSLog(@"QUERY %@", queryStatement);
+    
     sqlite3_stmt *statement;
     id content = NULL;
     
@@ -116,7 +122,7 @@ static BOOL initialized = NO;
         return NULL;
     }
     
-    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' ORDER BY TIMESTAMP ASC LIMIT 1", [NSString stringWithFormat:@"list:%@", key]];
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' AND KIND = %d ORDER BY TIMESTAMP ASC LIMIT 1", key, HMRStoreListType];
     sqlite3_stmt *statement;
     id content = NULL;
     
@@ -143,7 +149,7 @@ static BOOL initialized = NO;
         return NULL;
     }    
     
-    return [self retrieveValuesForKey:[NSString stringWithFormat:@"list:%@", key] error:error];
+    return [self retrieveValuesForKey:key error:error];
 }
 
 - (void)removeListForKey:(NSString *)key error:(NSError**)error
@@ -152,7 +158,7 @@ static BOOL initialized = NO;
         return;
     }   
     
-    [self deleteValueForKey:[NSString stringWithFormat:@"list:%@", key] error:error];
+    [self deleteValueForKey:key error:error];
 }
 
 #pragma mark - Key/Value
@@ -162,14 +168,12 @@ static BOOL initialized = NO;
     if (![self validKey:key error:error]) {
         return;
     }    
-
-    NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];
     
-    if ([self valueForKey:itemKey error:NULL] != NULL) {
-        [self removeValueForKey:itemKey error:NULL];
+    if ([self valueForKey:key error:NULL] != NULL) {
+        [self removeValueForKey:key error:NULL];
     }
     
-    [self saveValue:value forKey:itemKey error:error];
+    [self saveValue:value forKey:key kind:HMRStoreKVType error:error];
 }
 
 - (id)valueForKey:(NSString *)key error:(NSError**)error
@@ -177,10 +181,8 @@ static BOOL initialized = NO;
     if (![self validKey:key error:error]) {
         return NULL;
     }    
-
-    NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];    
     
-    NSArray *values = [self retrieveValuesForKey:itemKey error:error];
+    NSArray *values = [self retrieveValuesForKey:key error:error];
 
     if ([values count] == 0) {
         return NULL;
@@ -195,9 +197,7 @@ static BOOL initialized = NO;
         return;
     }    
     
-    NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];        
-    
-    [self deleteValueForKey:itemKey error:error];
+    [self deleteValueForKey:key error:error];
 }
 
 #pragma mark - Private methods
@@ -255,7 +255,7 @@ static BOOL initialized = NO;
     }
 }
 
-- (void)saveValue:(NSString*)value forKey:(NSString*)key error:(NSError **)error
+- (void)saveValue:(NSString*)value forKey:(NSString*)key kind:(NSInteger)kind error:(NSError **)error
 {
     if (![self validKey:key error:error]) {
         return;
@@ -264,7 +264,7 @@ static BOOL initialized = NO;
     CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
     NSString *uuidString = CFBridgingRelease(CFUUIDCreateString(kCFAllocatorDefault, uuid));     
     
-    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO STORE (UUID, KEY, CONTENT, TIMESTAMP) VALUES ('%@', '%@', '%@', %d)", uuidString, key, value, [[NSDate date] timeIntervalSince1970]];
+    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO STORE (UUID, KEY, CONTENT, TIMESTAMP, KIND) VALUES ('%@', '%@', '%@', %f, %d)", uuidString, key, value, [[NSDate date] timeIntervalSince1970], kind];
     NSLog(@"QUERY %@", insertStatement);
     sqlite3_stmt *statement;
     
