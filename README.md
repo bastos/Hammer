@@ -23,6 +23,14 @@ Lists:
     [HMRStore sharedInstance] shiftValueFromList:@"test" error:NULL];    
     [HMRStore sharedInstance] valuesFromList:@"test" error:NULL];
 
+## Using Hammer ##
+
+Just copy  HMRStore.m and HMRStore.h to your project, keep in mind that Hammer uses ARC.
+
+You can also use as a static library.
+
+_*Hammer was tested on iOS 4.3 and 5.1._
+
 ## License ##
 
 MIT License (read LICENSE)

@@ -40,7 +40,7 @@
 		04ABBAD0157664B500ABEFBE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		04ABBAD8157664B500ABEFBE /* HammerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HammerTests-Info.plist"; sourceTree = "<group>"; };
 		04ABBADA157664B500ABEFBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		04ABBADC157664B500ABEFBE /* HMRStoreTests.h */ = {isa = PBXFileReference; path = HMRStoreTests.h; sourceTree = "<group>"; };
+		04ABBADC157664B500ABEFBE /* HMRStoreTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMRStoreTests.h; sourceTree = "<group>"; };
 		04ABBADD157664B500ABEFBE /* HMRStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMRStoreTests.m; sourceTree = "<group>"; };
 		04ABBAEB15766BAF00ABEFBE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -394,6 +394,7 @@
 				04ABBAE3157664B500ABEFBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04ABBAE4157664B500ABEFBE /* Build configuration list for PBXNativeTarget "HammerTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +403,7 @@
 				04ABBAE6157664B500ABEFBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

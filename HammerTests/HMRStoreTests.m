@@ -16,8 +16,8 @@
 - (void)setUp
 {
     [super setUp];
-    
-    self.databasePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"HammerStore.sqlite"];        
+
+    self.databasePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"HammerStore" ofType:@"sqlite"];
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
     
     [store setupDatabase];
