@@ -153,11 +153,13 @@ static BOOL initialized = NO;
         return;
     }    
 
-    if ([self valueForKey:key error:NULL] != NULL) {
-        [self removeValueForKey:key error:NULL];
+    NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];
+    
+    if ([self valueForKey:itemKey error:NULL] != NULL) {
+        [self removeValueForKey:itemKey error:NULL];
     }
     
-    [self saveValue:value forKey:key error:error];
+    [self saveValue:value forKey:itemKey error:error];
 }
 
 - (id)valueForKey:(NSString *)key error:(NSError**)error
@@ -166,7 +168,9 @@ static BOOL initialized = NO;
         return NULL;
     }    
 
-    NSArray *values = [self retrieveValuesForKey:key error:error];
+    NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];    
+    
+    NSArray *values = [self retrieveValuesForKey:itemKey error:error];
 
     if ([values count] == 0) {
         return NULL;
@@ -181,7 +185,9 @@ static BOOL initialized = NO;
         return;
     }    
     
-    NSString *insertStatement = [NSString stringWithFormat:@"DELETE FROM STORE WHERE KEY = '%@'", key];
+    NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];        
+    
+    NSString *insertStatement = [NSString stringWithFormat:@"DELETE FROM STORE WHERE KEY = '%@'", itemKey];
     
     sqlite3_stmt *statement;
     
