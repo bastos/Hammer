@@ -109,7 +109,34 @@ static BOOL initialized = NO;
     return content;       
 }
 
-- (NSArray *)valuesFromList:(NSString *)key error:(NSError**)error
+- (id)shiftValueFromList:(NSString *)key error:(NSError**)error
+{
+    if (![self validKey:key error:error]) {
+        return NULL;
+    }
+    
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT CONTENT, UUID FROM STORE WHERE KEY = '%@' ORDER BY TIMESTAMP ASC LIMIT 1", [NSString stringWithFormat:@"list:%@", key]];
+    sqlite3_stmt *statement;
+    id content = NULL;
+    
+    if (sqlite3_prepare_v2(_databaseHandle, [queryStatement UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            content = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 0)];
+            [self deleteValueUsingUUID: [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 1)] error: error];
+        }
+        sqlite3_finalize(statement);
+    } else if (error) {
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:@"Failed to prepare statement" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"Guilda.Hammer" code:1 userInfo: errorDetail];        
+        NSLog(@"Prepare does not work: %@", queryStatement);        
+        return NULL;
+    }
+    
+    return content;       
+}
+
+- (NSArray *)getValuesFromList:(NSString *)key error:(NSError**)error
 {
     if (![self validKey:key error:error]) {
         return NULL;
@@ -120,7 +147,7 @@ static BOOL initialized = NO;
 
 #pragma mark - Key/Value
 
-- (void)value:(id)value forKey:(NSString *)key error:(NSError**)error
+- (void)getValue:(id)value forKey:(NSString *)key error:(NSError**)error
 {
     if (![self validKey:key error:error]) {
         return;
