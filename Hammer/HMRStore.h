@@ -29,4 +29,6 @@
 - (id)popValueFromList:(NSString *)key error:(NSError**)error;
 - (id)shiftValueFromList:(NSString *)key error:(NSError**)error;
 - (id)getValuesFromList:(NSString *)key error:(NSError**)error;
+- (void)removeListForKey:(NSString *)key error:(NSError**)error;
+
 @end

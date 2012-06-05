@@ -14,6 +14,7 @@
 - (BOOL)validKey:(NSString *)key error:(NSError**)error;
 - (void)saveValue:(NSString*)value forKey:(NSString*)key error:(NSError **)error;
 - (void)deleteValueUsingUUID:(NSString *)uuid error:(NSError**)error;
+- (void)deleteValueForKey:(NSString *)key error:(NSError**)error;
 
 @end
 
@@ -145,6 +146,15 @@ static BOOL initialized = NO;
     return [self retrieveValuesForKey:[NSString stringWithFormat:@"list:%@", key] error:error];
 }
 
+- (void)removeListForKey:(NSString *)key error:(NSError**)error
+{
+    if (![self validKey:key error:error]) {
+        return;
+    }   
+    
+    [self deleteValueForKey:[NSString stringWithFormat:@"list:%@", key] error:error];
+}
+
 #pragma mark - Key/Value
 
 - (void)getValue:(id)value forKey:(NSString *)key error:(NSError**)error
@@ -187,27 +197,7 @@ static BOOL initialized = NO;
     
     NSString *itemKey = [NSString stringWithFormat:@"item:%@", key];        
     
-    NSString *insertStatement = [NSString stringWithFormat:@"DELETE FROM STORE WHERE KEY = '%@'", itemKey];
-    
-    sqlite3_stmt *statement;
-    
-    if (sqlite3_prepare_v2(_databaseHandle, [insertStatement UTF8String], -1, &statement, NULL) == SQLITE_OK)
-    {
-        char *execError;
-        if (sqlite3_exec(_databaseHandle, [insertStatement UTF8String], NULL, NULL, &execError) == SQLITE_OK)
-        {
-            NSLog(@"Data Deleted");
-        } else if (error) {
-            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-            [errorDetail setValue:@"Failed to exec statement" forKey:NSLocalizedDescriptionKey];
-            *error = [NSError errorWithDomain:@"Guilda.Hammer" code:0 userInfo: errorDetail];
-        }
-        sqlite3_finalize(statement);
-    } else if (error) {
-        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-        [errorDetail setValue:@"Failed to prepare statement" forKey:NSLocalizedDescriptionKey];
-        *error = [NSError errorWithDomain:@"Guilda.Hammer" code:1 userInfo: errorDetail];        
-    }
+    [self deleteValueForKey:itemKey error:error];
 }
 
 #pragma mark - Private methods
@@ -297,6 +287,36 @@ static BOOL initialized = NO;
         *error = [NSError errorWithDomain:@"Guilda.Hammer" code:1 userInfo: errorDetail];        
     }  
 }
+
+- (void)deleteValueForKey:(NSString *)key error:(NSError**)error
+{
+    if (![self validKey:key error:error]) {
+        return;
+    }    
+        
+    NSString *insertStatement = [NSString stringWithFormat:@"DELETE FROM STORE WHERE KEY = '%@'", key];
+    
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(_databaseHandle, [insertStatement UTF8String], -1, &statement, NULL) == SQLITE_OK)
+    {
+        char *execError;
+        if (sqlite3_exec(_databaseHandle, [insertStatement UTF8String], NULL, NULL, &execError) == SQLITE_OK)
+        {
+            NSLog(@"Data Deleted");
+        } else if (error) {
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:@"Failed to exec statement" forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:@"Guilda.Hammer" code:0 userInfo: errorDetail];
+        }
+        sqlite3_finalize(statement);
+    } else if (error) {
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:@"Failed to prepare statement" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"Guilda.Hammer" code:1 userInfo: errorDetail];        
+    }
+}
+
 
 - (BOOL)validKey:(NSString *)key error:(NSError**)error
 {

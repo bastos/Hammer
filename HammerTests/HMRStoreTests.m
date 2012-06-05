@@ -148,4 +148,15 @@
     STAssertTrue([object1 isEqualToString:@"2"], @"Objects removed from list");        
     STAssertTrue([[store getValuesFromList:@"testPopValueFromList" error:NULL] count] == 0, @"Objects removed from list");
 }
+
+- (void)testRemoveValueFromList 
+{
+    HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
+    [store pushValue:@"1" toList:@"testPopValueFromList" error:NULL];
+    [store pushValue:@"2" toList:@"testPopValueFromList" error:NULL];    
+    
+    [store removeListForKey:@"testPopValueFromList" error:NULL];
+    
+    STAssertTrue([[store getValuesFromList:@"testPopValueFromList" error:NULL] count] == 0, @"Objects removed from list");
+}
 @end
