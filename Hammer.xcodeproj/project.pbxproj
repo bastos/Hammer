@@ -17,6 +17,7 @@
 		04ABBADE157664B500ABEFBE /* HMRStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABBADD157664B500ABEFBE /* HMRStoreTests.m */; };
 		04ABBAEC15766BAF00ABEFBE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAEB15766BAF00ABEFBE /* libsqlite3.dylib */; };
 		04ABBAED15766BBE00ABEFBE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ABBAEB15766BAF00ABEFBE /* libsqlite3.dylib */; };
+		04D78EF91582367D007D9832 /* HMRStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 04ABBAC5157664B400ABEFBE /* HMRStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D78EF91582367D007D9832 /* HMRStore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
