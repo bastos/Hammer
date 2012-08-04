@@ -27,7 +27,7 @@ extern NSInteger const HMRStoreListType;
 
 - (BOOL)validKey:(NSString *)key error:(NSError**)error;
 
-- (void)getValue:(id)value forKey:(NSString *)key error:(NSError**)error;
+- (void)setValue:(id)value forKey:(NSString *)key error:(NSError**)error;
 - (id)valueForKey:(NSString *)key error:(NSError**)error;
 - (void)removeValueForKey:(NSString *)key error:(NSError**)error;
 

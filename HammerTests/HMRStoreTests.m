@@ -43,7 +43,7 @@
     
     sqlite3 *databaseHandle = [store databaseHandle];
  
-    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO STORE (UUID, KEY, CONTENT) VALUES (?, ?, ?)", @"e54e59e0-aa6d-11e1-afa6-0800200c9a66", @"test", @"123" ];
+    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO STORE (UUID, KEY, CONTENT) VALUES ('%@', '%@', '%@')", @"e54e59e0-aa6d-11e1-afa6-0800200c9a66", @"test", @"123" ];
     
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(databaseHandle, [insertStatement UTF8String], -1, &statement, NULL) == SQLITE_OK)
@@ -65,7 +65,7 @@
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
     NSError *error = NULL;
-    [store getValue:@"bar" forKey:@"foo" error:&error];
+    [store setValue:@"bar" forKey:@"foo" error:&error];
     
     STAssertTrue(error == NULL, @"Should not have an error");
 }
@@ -73,7 +73,7 @@
 - (void)testGet
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
-    [store getValue:@"bar" forKey:@"foo" error:NULL];
+    [store setValue:@"bar" forKey:@"foo" error:NULL];
     NSString *value = [store valueForKey:@"foo" error:NULL];
     NSLog(@"Value == %@", value);
     
@@ -83,7 +83,7 @@
 - (void)testRemove
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
-    [store getValue:@"bar" forKey:@"foo" error:NULL];
+    [store setValue:@"bar" forKey:@"foo" error:NULL];
     [store removeValueForKey:@"foo" error:NULL];
     id value = [store valueForKey:@"foo" error:NULL];
     
@@ -94,7 +94,7 @@
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
     NSError *error;
-    [store getValue:@"bar" forKey:NULL error:&error];    
+    [store setValue:@"bar" forKey:NULL error:&error];    
     
     STAssertTrue(error != NULL, @"Key was not invalid");    
 }
@@ -103,7 +103,7 @@
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
     NSError *error;
-    [store getValue:@"bar" forKey:@"" error:&error];    
+    [store setValue:@"bar" forKey:@"" error:&error];    
     
     STAssertTrue(error != NULL, @"Key was not invalid");    
 }

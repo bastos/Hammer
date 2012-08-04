@@ -163,7 +163,7 @@ static BOOL initialized = NO;
 
 #pragma mark - Key/Value
 
-- (void)getValue:(id)value forKey:(NSString *)key error:(NSError**)error
+- (void)setValue:(id)value forKey:(NSString *)key error:(NSError**)error
 {
     if (![self validKey:key error:error]) {
         return;
