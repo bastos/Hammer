@@ -70,6 +70,16 @@
     STAssertTrue(error == NULL, @"Should not have an error");
 }
 
+- (void)testSetObject
+{
+    HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
+    NSError *error = NULL;
+    [store setValue:[[NSObject alloc] init] forKey:@"foo" error:&error];
+    
+    STAssertTrue(error == NULL, @"Should not have an error");
+}
+
+
 - (void)testGet
 {
     HMRStore *store = [HMRStore sharedInstanceWithDatabasePath:self.databasePath];
@@ -159,4 +169,5 @@
     
     STAssertTrue([[store getValuesFromList:@"testPopValueFromList" error:NULL] count] == 0, @"Objects removed from list");
 }
+
 @end

@@ -12,7 +12,6 @@
 extern NSInteger const HMRStoreKVType;
 extern NSInteger const HMRStoreListType;
 
-
 @interface HMRStore : NSObject {
     sqlite3 *databaseHandle;
 }

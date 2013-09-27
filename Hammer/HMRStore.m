@@ -29,6 +29,8 @@ NSInteger const HMRStoreListType = 1;
 static HMRStore *sharedSingleton;
 static BOOL initialized = NO;
 
+#pragma mark - Singleton
+
 + (HMRStore*)sharedInstanceWithDatabasePath:(NSString*)databasePath
 {
     if(!initialized)
@@ -52,6 +54,8 @@ static BOOL initialized = NO;
     
     return [self sharedInstanceWithDatabasePath:databasePath];
 }
+
+#pragma mark - Database
 
 - (void)setupDatabase
 {
